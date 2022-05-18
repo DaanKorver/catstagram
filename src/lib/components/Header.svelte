@@ -18,10 +18,12 @@
 
 <style>
   header {
-    background-color: var(--secondary);
+    background-color: var(--background);
     padding: 1em;
     border-bottom: 1px solid var(--light-gray);
     margin-bottom: .5em;
+    position: fixed;
+    width: 100%;
   }
 
   ul {

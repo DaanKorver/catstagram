@@ -46,6 +46,7 @@
 
     main {
       padding: 0 1em;
+      padding-top: 4.5em;
     }
     
     main.nav {

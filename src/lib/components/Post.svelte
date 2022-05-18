@@ -6,7 +6,7 @@
 
 <section>
   <div class="user">
-    <img src={profile} alt="">
+    <img src={profile} alt="profile">
     <div>
       <h2>Daan</h2>
       <p>June 3rd</p>
@@ -51,9 +51,10 @@ section {
 
 section > img {
   width: 100%;
-  height: 30vh;
+  height: 45vh;
   object-fit: cover;
   border-radius: var(--radius);
+  max-height: 90vw;
 }
 
 .meta {

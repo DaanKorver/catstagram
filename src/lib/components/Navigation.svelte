@@ -1,12 +1,16 @@
 <script>
+  import Preloader from '$lib/components/Preloader.svelte'
+
   import home from '$lib/assets/icons/home.svg'
   import search from '$lib/assets/icons/search.svg'
   import heart from '$lib/assets/icons/heart.svg'
   import profile from '$lib/assets/icons/profile.svg'
 
   let fileInput
+  let loading = false
 
   function uploadImage(el) {
+    loading = true
     const image = el.target.files[0]
     const reader = new FileReader()
     reader.readAsDataURL(image)
@@ -20,7 +24,7 @@
     const imgData = imageData.split(',')
     data["image"] = imgData[1]
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/upload', {
         method: 'POST',
         headers: {
           "content-type": "application/json",
@@ -29,6 +33,7 @@
         body: JSON.stringify(data)
       })
       const canUpload = await response.json()
+      loading = false
     } catch (error) {
       console.log(error);
     }
@@ -47,6 +52,9 @@
     <input type="file" name="image" id="image" accept=".png, .jpg" bind:this={fileInput} on:change={uploadImage}>
   </form>
 </nav>
+{#if loading}
+  <Preloader />
+{/if}
 
 <style>
   nav {
