@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Mukta&family=PT+Sans:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --text: #0a0a0a;
+      --text: #1a1a1a;
       --text-light: #aaa;
       --light-gray: #ccc;
       --background: #fafafa;
@@ -107,10 +107,10 @@
       transform: translateY(0%)
     }
     /* Dark mode */
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
       :root {
       --text: #fafafa;
-      --background: #0a0a0a;
+      --background: #1a1a1a;
       }
     }
 </style>
