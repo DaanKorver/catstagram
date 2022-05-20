@@ -26,6 +26,7 @@ export async function post({ request }) {
 			status: 302
 		}
 	} catch (err) {
+		console.log(err)
 		let msg = ''
 		switch (err.errno) {
 			case 1062:
