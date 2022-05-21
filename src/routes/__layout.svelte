@@ -72,13 +72,13 @@
 			font-size: 1rem;
 		}
 
-		.input img {
-			width: 1.5em;
-			height: 1.5em;
+		.input svg {
+			width: 1.3em;
+			height: 1.3em;
 			object-fit: contain;
 		}
 
-		.input img.small {
+		.input svg.small {
 			height: 1.2em;
 		}
 
