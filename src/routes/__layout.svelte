@@ -101,6 +101,7 @@
 			flex-grow: 1;
 			background-color: transparent;
 			padding: 0.5em 0;
+			color: var(--text);
 		}
 
 		input:focus {

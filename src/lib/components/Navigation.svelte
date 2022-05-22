@@ -1,43 +1,21 @@
 <script>
-	import Preloader from '$lib/components/Preloader.svelte'
-
 	import home from '$lib/assets/icons/home.svg'
 	import search from '$lib/assets/icons/search.svg'
 	import heart from '$lib/assets/icons/heart.svg'
 	import profile from '$lib/assets/icons/profile.svg'
 
+	import { image } from '../../store'
+	import { goto } from '$app/navigation'
+
 	let fileInput
-	let loading = false
 
-	function uploadImage(el) {
-		loading = true
-		const image = el.target.files[0]
-		const reader = new FileReader()
-		reader.readAsDataURL(image)
-		reader.onload = (e) => {
-			upload(e.target.result)
-		}
+	async function uploadImage(el) {
+		const file = el.target.files[0]
+		image.set(file)
+		goto('/upload')
 	}
 
-	async function upload(imageData) {
-		const data = {}
-		const imgData = imageData.split(',')
-		data['image'] = imgData[1]
-		try {
-			const response = await fetch('/upload', {
-				method: 'POST',
-				headers: {
-					'content-type': 'application/json',
-					accept: 'application/json'
-				},
-				body: JSON.stringify(data)
-			})
-			const canUpload = await response.json()
-			loading = false
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	async function upload(imageData) {}
 </script>
 
 <nav>
@@ -155,9 +133,6 @@
 		/>
 	</form>
 </nav>
-{#if loading}
-	<Preloader />
-{/if}
 
 <style>
 	nav {

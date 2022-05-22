@@ -10,9 +10,6 @@
 </script>
 
 <script>
-	import mail from '$lib/assets/icons/mail_gray.svg'
-	import lock from '$lib/assets/icons/lock_gray.svg'
-
 	let email
 	let password
 
