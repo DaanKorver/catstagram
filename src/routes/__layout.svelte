@@ -114,7 +114,7 @@
 			transform: translateY(0%);
 		}
 		/* Dark mode */
-		@media (prefers-color-scheme: light) {
+		@media (prefers-color-scheme: dark) {
 			:root {
 				--text: #fafafa;
 				--background: #1a1a1a;

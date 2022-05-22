@@ -50,7 +50,7 @@
 					height="44"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
-					stroke="#2c3e50"
+					stroke="#000"
 					fill="none"
 					stroke-linecap="round"
 					stroke-linejoin="round"
@@ -71,7 +71,7 @@
 					height="44"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
-					stroke="#2c3e50"
+					stroke="#000"
 					fill="none"
 					stroke-linecap="round"
 					stroke-linejoin="round"
@@ -82,7 +82,26 @@
 				</svg>
 			</a>
 		</li>
-		<li class="upload"><button on:click={() => fileInput.click()}>&plus;</button></li>
+		<li class="upload">
+			<button on:click={() => fileInput.click()}
+				><svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="icon icon-tabler icon-tabler-plus"
+					width="44"
+					height="44"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="#2c3e50"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+					<line x1="12" y1="5" x2="12" y2="19" />
+					<line x1="5" y1="12" x2="19" y2="12" />
+				</svg></button
+			>
+		</li>
 		<li>
 			<a href="/">
 				<svg
@@ -92,7 +111,7 @@
 					height="44"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
-					stroke="#2c3e50"
+					stroke="#000"
 					fill="none"
 					stroke-linecap="round"
 					stroke-linejoin="round"
@@ -113,7 +132,7 @@
 					height="44"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
-					stroke="#2c3e50"
+					stroke="#000"
 					fill="none"
 					stroke-linecap="round"
 					stroke-linejoin="round"
@@ -155,56 +174,26 @@
 		justify-content: space-around;
 		align-items: center;
 		list-style: none;
+		padding: 0.7em 0;
 	}
 
-	img {
-		width: 2em;
-		height: 2em;
-	}
-
-	.upload {
-		transform: translateY(-50%);
+	li {
+		width: 2rem;
+		height: 2rem;
 	}
 
 	button {
-		width: 3.5rem;
-		height: 3.5rem;
-		border-radius: 50%;
+		background-color: transparent;
 		border: none;
-		position: relative;
-		background: var(--accent);
-		color: #fff;
-		font-size: 2rem;
+		outline: none;
 	}
 
-	button::before {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		border-radius: 50%;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		border: 0.5rem solid var(--background);
+	svg {
+		width: 2rem;
+		height: 2rem;
+		object-fit: contain;
+		stroke: var(--text);
 	}
-
-	button::after {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) rotate(-45deg);
-		border-radius: 50%;
-		width: calc(100% + 1rem);
-		height: calc(100% + 1rem);
-		z-index: -1;
-		border: 2px solid transparent;
-		border-bottom-color: var(--light-gray);
-		border-left-color: var(--light-gray);
-	}
-
 	.hidden {
 		display: none;
 		visibility: hidden;
