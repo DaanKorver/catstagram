@@ -33,6 +33,7 @@
 	}
 
 	async function upload() {
+		console.log('starting')
 		const data = {}
 		const imgData = imgSrc.split(',')
 		data['image'] = imgData[1]
@@ -46,7 +47,7 @@
 				body: JSON.stringify(data)
 			})
 			const canUpload = await response.json()
-			// console.log(canUpload)
+			console.log(canUpload)
 			//TODO: handle loading screen.
 		} catch (error) {
 			console.log(error)
@@ -88,6 +89,7 @@
 		<input type="text" name="caption" id="caption" placeholder=" " bind:value={caption} required />
 		<label for="caption">Caption</label>
 	</div>
+	<p>{caption?.length || 0} / 69</p>
 	<button type="submit">Upload</button>
 </form>
 
@@ -130,6 +132,21 @@
 		object-fit: cover;
 		position: relative;
 		z-index: 2;
+	}
+
+	form {
+		display: flex;
+		gap: 1em;
+		flex-direction: column;
+	}
+
+	button {
+		border: none;
+		padding: 1em;
+		background: var(--accent);
+		border-radius: var(--radius);
+		color: #fff;
+		font-size: 1rem;
 	}
 
 	@keyframes loading {

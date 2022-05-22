@@ -1,5 +1,6 @@
-import '@tensorflow/tfjs-backend-cpu'
-import '@tensorflow/tfjs-backend-webgl'
+import '@tensorflow/tfjs-node'
+import '@tensorflow/tfjs-node-gpu'
+// import '@tensorflow/tfjs-backend-webgl'
 import cocoSsd from '@tensorflow-models/coco-ssd'
 import { createCanvas, loadImage } from 'canvas'
 import sizeOf from 'image-size'
