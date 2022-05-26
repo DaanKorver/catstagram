@@ -1,5 +1,6 @@
 <script>
 	import { session } from '$app/stores'
+	import { page } from '$app/stores'
 
 	import Header from '$lib/components/Header.svelte'
 	import Navigation from '$lib/components/Navigation.svelte'
@@ -9,7 +10,7 @@
 <main class={$session.loggedIn ? 'nav' : ''}>
 	<slot />
 </main>
-{#if $session.loggedIn}
+{#if $session.loggedIn && $page.url.pathname !== '/upload'}
 	<Navigation />
 {/if}
 

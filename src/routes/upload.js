@@ -4,11 +4,13 @@ import '@tensorflow/tfjs-node-gpu'
 import cocoSsd from '@tensorflow-models/coco-ssd'
 import { createCanvas, loadImage } from 'canvas'
 import sizeOf from 'image-size'
-import { writeFileSync } from 'fs'
+import fse from 'fs-extra'
+import { mysqlconnFn } from '$lib/mysql'
+import { v4 as uuidv4 } from 'uuid'
 
 const MINIMAL_SCORE = 0.85
 
-export async function post({ request }) {
+export async function post({ request, locals }) {
 	try {
 		const data = JSON.parse((await request.body.read()).toString())
 		const image = data['image']
@@ -26,7 +28,22 @@ export async function post({ request }) {
 		if (!cat) return { body: { canUpload: false } }
 		const canUpload = cat.score > MINIMAL_SCORE
 		if (canUpload) {
-			writeFileSync('uploads/somecat.png', image, 'base64')
+			try {
+				const connection = await mysqlconnFn()
+				const { caption } = data
+				const userId = locals.user.user_id
+				const filename = uuidv4()
+				const path = `uploads/user_${userId}/${filename}.png`
+				fse.outputFileSync(path, path, 'base64')
+				await connection.query(`INSERT INTO posts (caption, path, user_id) VALUES (?,?,?)`, [
+					caption,
+					path,
+					userId
+				])
+			} catch (err) {
+				console.log(err)
+				return { status: 400, body: { err } }
+			}
 		}
 		return { body: { canUpload } }
 	} catch (err) {

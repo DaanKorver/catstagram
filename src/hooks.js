@@ -16,7 +16,7 @@ export async function handle({ event, resolve }) {
 				promise = () => {
 					return new Promise(async (resolve, reject) => {
 						const [rows] = await connection.query(
-							`SELECT username, profile_picture from users WHERE user_id = ?`,
+							`SELECT user_id, username, profile_picture from users WHERE user_id = ?`,
 							[token.id]
 						)
 						const [user] = rows

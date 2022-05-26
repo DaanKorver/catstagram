@@ -14,8 +14,6 @@
 		image.set(file)
 		goto('/upload')
 	}
-
-	async function upload(imageData) {}
 </script>
 
 <nav>
